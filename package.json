@@ -1,0 +1,15 @@
+{
+  "name": "noteapp",
+  "version": "0.0.1",
+  "description": "A Notes App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sai Krishna Mohan",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "yargs": "^12.0.1"
+  }
+}
