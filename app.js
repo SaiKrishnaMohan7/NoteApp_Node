@@ -13,16 +13,21 @@ var command = yargv._[0];
 
 
 if (command === 'add'){
-    note = notes.addNote(yargv.title, yargv.body);
+    var note = notes.addNote(yargv.title, yargv.body);
     if(note){
-        console.log(`New Note, ${note.title}, created!`);
+        notes.logNote(note);
     } else {
         console.log('Note with this title already exists');
     }
-}else if(command === 'list'){
+} else if(command === 'list'){
     notes.getAll();
 } else if(command === 'read'){
-    notes.getNote(yargv.title);
+    var note = notes.getNote(yargv.title);
+    if(note){
+        notes.logNote(note);
+    } else {
+        console.log('No Note with title');
+    }
 } else if(command === 'remove'){
     notes.deleteNote(yargv.title);
 } else{
