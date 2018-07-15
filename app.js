@@ -1,10 +1,36 @@
 /*jshint esversion: 6*/
+
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
 const yargs = require('yargs');
 
-const yargv = yargs.argv;
+var titleOptions = {
+    describe: 'Title of Note',
+    demand: true, // required value
+    alias: 't'
+};
+var bodyOptions = {
+    describe: 'Body of the note',
+    demand: true,
+    alias: 'b'
+};
+
+// Configuring yargs to give info about running script
+const yargv = yargs
+.command('add', 'Add a new Note', {
+    title: titleOptions,
+    body: bodyOptions
+})
+.command('list', 'List all Notes')
+.command('remove', 'Remove a Note', {
+    title: titleOptions
+})
+.command('read', 'Read a Note', {
+    title: titleOptions
+})
+.help() // --help flag picks details from the options obj supplied to .command
+.argv;
 const notes = require('./notes.js');
 
 var command = yargv._[0];
